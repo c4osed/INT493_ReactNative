@@ -4,36 +4,48 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+class Em extends Component{
+  render(){
+    return(
+      <Text style={{fontStyle:"italic"}}>
+        {this.props.children}
+      </Text>
+    )
+  }
+}
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = { text: ''}
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <View
+        style={{
+        // flexDirection: 'row',
+        flexDirection: 'column',
+        height: 500,
+        padding: 20
+      }}>
+        <View style = {{backgroundColor: 'blue',flex: 0.3}}/>
+        <View style = {{backgroundColor: 'red',flex: 0.5}}/>
+        <Text style = {{fontStyle:"italic"}}>Hello World</Text>
+        <Text><Em>Hello World</Em></Text>
+        <TextInput
+          style={{
+            height:40,borderColor:'green',
+            borderWidth:1
+          }}
+          placeholder = "Type here to translate!"
+          onChangeText = {(text) => this.setState({text})}
+          onSubmitEditing = {()=>console.log(this.state.text)}
+          value = {this.state.text}
+        />
+      </ View>
     );
   }
 }
@@ -43,16 +55,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
-  },
+    marginBottom: 5
+  }
 });
