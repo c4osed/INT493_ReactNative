@@ -23,16 +23,22 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View style={{flex:1,flexDirection:'row'}}>
+        <View style={{flex:0.3}}>
+          <View style={{flex:0.2,backgroundColor:'yellow'}}/>
+          <View style={{flex:0.4,backgroundColor:'green'}}/>
+          <View style={{flex:0.4,backgroundColor:'blue'}}/>
+        </View>
+        <View style={{flex:0.7,backgroundColor:'black'}}>
+          <View style={{flex:0.6,backgroundColor:'red'}}/>
+          <View style={{flex:0.4,flexDirection:'row'}}>
+            <View style={{flex:0.7,backgroundColor:'green'}}/>
+            <View style={{flex:0.3}}>
+              <View style={{flex:0.5,backgroundColor:'yellow'}}/>
+              <View style={{flex:0.5,backgroundColor:'red'}}/>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
