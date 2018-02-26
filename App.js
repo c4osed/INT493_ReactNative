@@ -19,6 +19,7 @@ import FruitApp from './FruitApp'
 import FruitApp2 from './FruitApp2'
 import FlatApp from './FlatApp'
 import SectApp from './SectApp'
+import ContactsData from './ContactsData'
 
 
 
