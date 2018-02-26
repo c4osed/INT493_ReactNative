@@ -9,50 +9,63 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView,
+  ListView
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import ScrollApp from './ScrollApp'
+import FruitApp from './FruitApp'
+import FruitApp2 from './FruitApp2'
+import FlatApp from './FlatApp'
+import SectApp from './SectApp'
+
+
 
 type Props = {};
 export default class App extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    }
+  }
+  componentDidMount() {
+    fetch('http://web.sit.kmutt.ac.th/sanit/int493/contacts.php')
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
+      // <ScrollApp/>
+      // <FruitApp/>
+      // <FruitApp2/>
+      // <FlatApp/>
+      <View>
+        <Text>
+          {()=>componentDidMount}
+          </Text>
+        </View>
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  boxSmall: {
+    width: 200,
+    height: 200,
+    marginBottom: 10,
+    marginRight: 10,
+    backgroundColor: 'skyblue',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  boxLarge: {
+    width: 300,
+    height: 300,
+    marginBottom: 10,
+    marginRight: 10,
+    backgroundColor: 'steelblue',
   },
-});
+}) ;
