@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
+  FlatList,
   ScrollView,
   ListView
 } from 'react-native';
@@ -28,23 +29,19 @@ export default class App extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      data:ContactsData.fetchContacts().then()
     }
   }
-  componentDidMount() {
-    fetch('http://web.sit.kmutt.ac.th/sanit/int493/contacts.php')
-    .then(response => response.json())
-    .then(data => console.log(data))
-  }
+  
   render() {
     return (
       // <ScrollApp/>
       // <FruitApp/>
       // <FruitApp2/>
       // <FlatApp/>
-      <View>
+      <View style={styles.container}>
         <Text>
-          {()=>componentDidMount}
+          {this.state.data}
           </Text>
         </View>
     )
