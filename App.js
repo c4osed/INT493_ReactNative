@@ -10,6 +10,7 @@ import {
   View,
   FlatList
 } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text } from 'native-base';
 
 import ScrollApp from './ScrollApp'
 import FruitApp from './FruitApp'
@@ -39,16 +40,34 @@ export default class App extends Component<Props> {
       <ContactItem item={item} imgurl={imgurl}/>
     )
   }
+_renderListContact = (item)=>{
+  const picsrc = item.firstname.toLowerCase()+'.jpeg'
+    const imgurl = 'http://web.sit.kmutt.ac.th/sanit/int493/contacts/img/'+picsrc
+    return (
+      <ContactItem item={item} imgurl={imgurl}/>
+    )
+}
+
   
   render() {
     return (
-      <View style={styles.container}>
-        <FlatList
-        data = {this.state.data}
-        renderItem={this._renderContact}
-        keyExtractor={(item,index) => index.toString()}
-        />
-      </View>
+      // <View style={styles.container}>
+      //   <FlatList
+      //   data = {this.state.data}
+      //   renderItem={this._renderContact}
+      //   keyExtractor={(item,index) => index.toString()}
+      //   />
+      // </View>
+      <Container>
+          <Header>
+            </Header>
+          <Content>
+          <List dataArray={this.state.data}
+            renderRow={this._renderListContact
+            }>
+          </List>
+          </Content>
+      </Container>
     )
   }
 }
